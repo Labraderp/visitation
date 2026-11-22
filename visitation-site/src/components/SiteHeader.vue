@@ -1,11 +1,18 @@
 <script setup>
 import {ref, defineModel} from 'vue';
 import StandardButton from "./btns/StandardButton.vue";
-const loginModalOpen = defineModel({default: false});
+
+const loginModalOpen = defineModel('loginModalOpen', {type: Boolean, default: false});
+const registerModalOpen = defineModel('registerModalOpen', {type: Boolean, default: false});
 
 function openLoginModal() {
   loginModalOpen.value = true;
   console.log('Setting loginModalOpen to', loginModalOpen.value)
+}
+
+function openRegisterModal() {
+  registerModalOpen.value = true;
+  console.log('Setting registerModalOpen to', registerModalOpen.value)
 }
 
 </script>
@@ -17,7 +24,7 @@ function openLoginModal() {
       Welcome to the Chateau de Stripes and Barks
     </v-app-bar-title>
     <StandardButton v-model="loginModalOpen" btn-name="Log In" @click="openLoginModal" />
-    <StandardButton btn-name="Register"/>
+    <StandardButton v-model="registerModalOpen" btn-name="Register" @click="openRegisterModal"/>
   </v-app-bar>
 
 </template>
