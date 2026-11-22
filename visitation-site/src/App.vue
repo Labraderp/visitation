@@ -1,47 +1,33 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import SiteHeader from "./components/SiteHeader.vue";
+import ShowCarousel from "./components/ShowCarousel.vue";
+import SiteFooter from "./components/SiteFooter.vue";
+
+import { ref } from "vue";
+import LoginModal from "./components/modals/LoginModal.vue";
+
+const loginModalOpen = ref(false);
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+ <v-app class="app-override">
+   <SiteHeader v-model="loginModalOpen" />
+   <v-main class="main-override">
+     <LoginModal v-model="loginModalOpen" v-if="loginModalOpen" />
+     <ShowCarousel />
+   </v-main>
+  <SiteFooter />
+ </v-app>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+
+.main-override{
+  background-color: #ffffff00
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.app-override{
+  background-color: var(--bg-color);
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
