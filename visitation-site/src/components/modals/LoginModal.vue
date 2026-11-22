@@ -10,7 +10,7 @@ const showPassword = ref(false);
 
 <template>
   <v-dialog v-model="loginModalOpen" activator="parent" max-width="600">
-    <v-card class="loginModalStyling" title="Log into your RetardMaxxing Account">
+    <v-card class="loginModalStyling" title="Log into your account">
       <v-text-field
         hide-details="auto"
         label="Username" />
