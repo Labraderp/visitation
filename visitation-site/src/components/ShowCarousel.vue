@@ -1,6 +1,6 @@
 <script setup>
-import jayfridPic from '@/imgs/jayfrid com.jpg'
-import maxwallpaper from '@/imgs/Max wallpaper.png'
+
+
 </script>
 
 <template>
@@ -12,12 +12,12 @@ import maxwallpaper from '@/imgs/Max wallpaper.png'
       </v-carousel-item>
 
       <v-carousel-item
-          :src="jayfridPic"
+          src="https://cdn.vuetifyjs.com/images/cards/hotel.jpg"
           cover>
       </v-carousel-item>
 
       <v-carousel-item
-          :src="maxwallpaper"
+          src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
           cover>
       </v-carousel-item>
     </v-carousel>
