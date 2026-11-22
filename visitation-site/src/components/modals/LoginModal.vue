@@ -4,8 +4,16 @@ import ConfirmButton from "@/components/btns/ConfirmButton.vue";
 import { ref, defineModel } from "vue";
 
 const loginModalOpen = defineModel({default: true});
+const userData = defineModel('userData');
+const username = ref('');
 const password = ref('');
 const showPassword = ref(false);
+
+function successfulLogIn() {
+  loginModalOpen.value = false;
+  userData.value.auth = true;
+  userData.value.username = username.value;
+}
 </script>
 
 <template>
@@ -16,6 +24,7 @@ const showPassword = ref(false);
           class="mb-2 py-5"
           hide-details="auto"
           label="Username"
+          v-model="username"
           clearable/>
         <v-text-field
           hide-details="auto"
@@ -24,7 +33,7 @@ const showPassword = ref(false);
           @click:append-inner="showPassword = !showPassword"
           label="Password" />
         <v-card-actions class="d-flex justify-center align-center py-6">
-          <ConfirmButton @click="loginModalOpen = false" btnName="Log In" />
+          <ConfirmButton @click=successfulLogIn() btnName="Log In" />
           <CancelButton @click="loginModalOpen = false" btnName="Cancel"/>
         </v-card-actions>
         <v-card-text class="text-center">Forgot your password? Please click <a href="http://localhost:5173">here</a> to submit a reset request.</v-card-text>
